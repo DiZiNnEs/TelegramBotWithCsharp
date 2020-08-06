@@ -2,6 +2,8 @@ using System;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.ReplyMarkups;
 
 namespace TelegramBot
 {
@@ -29,25 +31,30 @@ namespace TelegramBot
 
         static async void Bot_OnMessage(object sender, MessageEventArgs e)
         {
-            if (e.Message.Text != null)
+            if (e.Message.Text == "/start")
             {
-                Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
-
                 await botClient.SendTextMessageAsync(
                     chatId: e.Message.Chat,
-                    text: "You said:\n" + e.Message.Text
+                    text: $"Hi, I'm .Net Bot and I give you your profile information, write me /profile" +
+                          $"\nLearn all commands: /commands"
                 );
             }
-
-            if (e.Message.Text == "Hello")
+            else if (e.Message.Text == "/commands")
             {
                 await botClient.SendTextMessageAsync(
                     e.Message.Chat,
-                    $"Hello, I'm bot and my name is .Net Core Bot for testing, {e.Message.Chat.Username}, {e.Message.Contact.PhoneNumber}, {e.Message.Chat.Photo}"
+                    $"/start - to starting bot \n/commands - to view commands \n/About bot - to view information about a bot "
                 );
             }
-
-            Console.WriteLine(e.Message.From.FirstName);
+            else if (e.Message.Text == "/profile")
+            {
+                await botClient.SendTextMessageAsync(
+                    e.Message.Chat,
+                    $"Your id: {e.Message.Chat.Id} \nIt's bot or not: {e.Message.From.IsBot} " +
+                    $"\nFirst Name: {e.Message.From.FirstName} \nLast Name: {e.Message.From.LastName}" +
+                    $"\nCountry code: {e.Message.From.LanguageCode}"
+                );
+            }
         }
     }
 }
