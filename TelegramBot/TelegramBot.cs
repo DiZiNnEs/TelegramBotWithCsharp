@@ -50,9 +50,9 @@ namespace TelegramBot
             {
                 await botClient.SendTextMessageAsync(
                     e.Message.Chat,
-                    $"Your id: {e.Message.Chat.Id} \nIt's bot or not: {e.Message.From.IsBot} " +
-                    $"\nFirst Name: {e.Message.From.FirstName} \nLast Name: {e.Message.From.LastName}" +
-                    $"\nCountry code: {e.Message.From.LanguageCode}"
+                    $"👤 Your id: {e.Message.Chat.Id} \n🤖 It's bot or not: {e.Message.From.IsBot} " +
+                    $"\n1️⃣ First Name: {e.Message.From.FirstName} \n2️⃣ Last Name: {e.Message.From.LastName}" +
+                    $"\n🏳️ Country code: {e.Message.From.LanguageCode}"
                 );
             }
         }
