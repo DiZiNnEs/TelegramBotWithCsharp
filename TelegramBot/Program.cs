@@ -10,8 +10,6 @@ namespace TelegramBot
         static void Main(string[] args)
         {
             TelegramBot.TelegramBotMain("1192886633:AAEZb2_F11bYVl4roQOzcd42ypRWsvM6lkY");
-            OpenWeather c = new OpenWeather();
-            c.test();
         }
     }
 }

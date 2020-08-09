@@ -10,7 +10,6 @@ namespace TelegramBot
     public static class TelegramBot
     {
         static ITelegramBotClient botClient;
-
         public static void TelegramBotMain(string TOKEN)
         {
             botClient = new TelegramBotClient(TOKEN);
@@ -54,6 +53,12 @@ namespace TelegramBot
                     $"\n1️⃣ First Name: {e.Message.From.FirstName} \n2️⃣ Last Name: {e.Message.From.LastName}" +
                     $"\n🏳️ Country code: {e.Message.From.LanguageCode}"
                 );
+            }
+            else if (e.Message.Text != null)
+            {
+                await botClient.SendTextMessageAsync(
+                    e.Message.Text,
+                    $"Current temp: ");
             }
         }
     }
