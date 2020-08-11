@@ -10,6 +10,7 @@ namespace TelegramBot
     public static class TelegramBot
     {
         static ITelegramBotClient botClient;
+
         public static void TelegramBotMain(string TOKEN)
         {
             botClient = new TelegramBotClient(TOKEN);
@@ -58,7 +59,7 @@ namespace TelegramBot
             {
                 await botClient.SendTextMessageAsync(
                     e.Message.Chat,
-                    $"Current temp: {OpenWeather.GiveTheWeather(e.Message.Text)}");
+                    $"Current temp: {OpenWeather<string>.GiveTheWeather(e.Message.Text)}");
             }
         }
     }
