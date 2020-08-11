@@ -57,8 +57,8 @@ namespace TelegramBot
             else if (e.Message.Text != null)
             {
                 await botClient.SendTextMessageAsync(
-                    e.Message.Text,
-                    $"Current temp: ");
+                    e.Message.Chat,
+                    $"Current temp: {OpenWeather.GiveTheWeather(e.Message.Text)}");
             }
         }
     }
